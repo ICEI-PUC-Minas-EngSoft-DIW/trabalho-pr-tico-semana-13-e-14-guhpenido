@@ -1,0 +1,346 @@
+/* ==================== VARIÁVEIS CSS ==================== */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --text-light: #adb5bd;
+    
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+
+/* ==================== RESET E ESTILOS GLOBAIS ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+/* ==================== FOTO DO PERFIL ==================== */
+.rounded-circle {
+    transition: all var(--transition-normal);
+}
+
+.rounded-circle:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 30px rgba(13, 110, 253, 0.4) !important;
+}
+
+/* ==================== NAVEGAÇÃO ==================== */
+.navbar {
+    background-color: var(--dark-color) !important;
+    min-height: 70px;
+    transition: all var(--transition-normal);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: transform var(--transition-normal);
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--warning-color);
+    transition: all var(--transition-normal);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+/* ==================== CAROUSEL / SLIDER DE DESTAQUES ==================== */
+.carousel-section {
+    margin-bottom: 3rem;
+}
+
+.carousel-image {
+    height: 600px;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.carousel-caption {
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 4rem 2rem 2rem;
+}
+
+.carousel-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+/* ==================== CARDS DE LUGARES ==================== */
+.lugar-card {
+    transition: all var(--transition-normal);
+    border: none !important;
+    overflow: hidden;
+}
+
+.lugar-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.lugar-card-img {
+    height: 250px;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.lugar-card:hover .lugar-card-img {
+    transform: scale(1.1);
+}
+
+.lugar-card .card-body {
+    padding: 1.5rem;
+}
+
+.lugar-card .card-title a:hover {
+    color: var(--primary-color) !important;
+    transition: color var(--transition-fast);
+}
+
+/* ==================== PÁGINA DE DETALHES ==================== */
+.sobre-lugar {
+    background-color: var(--light-color);
+    border-left: 4px solid var(--primary-color);
+}
+
+.info-item {
+    padding: 1rem;
+    border-left: 3px solid var(--primary-color);
+    background-color: #f8f9fa;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+}
+
+.atracao-card {
+    transition: all var(--transition-normal);
+    border: none !important;
+}
+
+.atracao-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md) !important;
+}
+
+.atracao-card img {
+    transition: transform var(--transition-slow);
+}
+
+.atracao-card:hover img {
+    transform: scale(1.05);
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+/* Tablets e dispositivos médios */
+@media (max-width: 992px) {
+    .carousel-image {
+        height: 450px;
+    }
+    
+    .carousel-caption {
+        padding: 3rem 1.5rem 1.5rem;
+    }
+    
+    .carousel-content h2 {
+        font-size: 2rem;
+    }
+    
+    .lugar-card-img {
+        height: 220px;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 768px) {
+    .carousel-image {
+        height: 350px;
+    }
+    
+    .carousel-caption {
+        padding: 2rem 1rem 1rem;
+    }
+    
+    .carousel-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.9rem;
+    }
+    
+    .carousel-content .d-flex {
+        flex-direction: column;
+        gap: 0.5rem !important;
+    }
+    
+    .lugar-card-img {
+        height: 200px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .display-5 {
+        font-size: 2rem;
+    }
+    
+    .display-6 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 576px) {
+    .carousel-image {
+        height: 300px;
+    }
+    
+    .carousel-caption {
+        padding: 1.5rem 0.75rem 0.75rem;
+    }
+    
+    .carousel-content h2 {
+        font-size: 1.25rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.8rem;
+        display: none; /* Oculta descrição em telas muito pequenas */
+    }
+    
+    .lugar-card-img {
+        height: 180px;
+    }
+    
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .display-5 {
+        font-size: 1.75rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+    }
+}
+
+/* ==================== ANIMAÇÕES E EFEITOS ==================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ==================== UTILITÁRIOS ==================== */
+.shadow-sm {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow-md {
+    box-shadow: var(--shadow-md) !important;
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.sticky-top {
+    position: sticky;
+    top: 100px;
+    z-index: 1020;
+}
+
+/* ==================== IMPRESSÃO ==================== */
+@media print {
+    .navbar,
+    .carousel-section,
+    footer,
+    .btn {
+        display: none !important;
+    }
+    
+    body {
+        padding-top: 0 !important;
+    }
+    
+    .card {
+        border: 1px solid #dee2e6 !important;
+        page-break-inside: avoid;
+    }
+}
+.card-img-top {
+    transition: transform var(--transition-normal);
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.02);
+}

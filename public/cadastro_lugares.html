@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastre novos lugares turísticos em Belo Horizonte">
+    <meta name="keywords" content="Belo Horizonte, turismo, cadastro, novo lugar">
+    <meta name="author" content="Gustavo Pereira">
+    <title>Cadastrar Lugar - BH Experiências</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    <!-- ==================== CABEÇALHO E MENU DE NAVEGAÇÃO ==================== -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="bi bi-geo-alt-fill text-warning"></i>
+                    BH Experiências
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="cadastro_lugares.html">Cadastrar Lugar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== SEÇÃO PRINCIPAL - FORMULÁRIO DE CADASTRO ==================== -->
+    <main class="container my-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h1 class="h3 mb-0">
+                            <i class="bi bi-plus-circle-fill me-2"></i>
+                            Cadastrar Novo Lugar Turístico
+                        </h1>
+                    </div>
+                    <div class="card-body p-4">
+                        
+                        <!-- Alerta de sucesso/erro -->
+                        <div id="alert-container"></div>
+                        
+                        <form id="form-cadastro-lugar" novalidate>
+                            <div class="row g-3">
+                                
+                                <!-- Nome do Lugar -->
+                                <div class="col-12">
+                                    <label for="nome" class="form-label fw-bold">
+                                        <i class="bi bi-geo-alt-fill text-primary me-1"></i>
+                                        Nome do Lugar *
+                                    </label>
+                                    <input type="text" class="form-control" id="nome" name="nome" required
+                                           placeholder="Ex: Centro Cultural da UFMG">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o nome do lugar.
+                                    </div>
+                                </div>
+                                
+                                <!-- Descrição Breve -->
+                                <div class="col-12">
+                                    <label for="descricao" class="form-label fw-bold">
+                                        <i class="bi bi-card-text text-primary me-1"></i>
+                                        Descrição Breve *
+                                    </label>
+                                    <textarea class="form-control" id="descricao" name="descricao" rows="3" required
+                                              placeholder="Breve descrição do lugar (máximo 200 caracteres)"
+                                              maxlength="200"></textarea>
+                                    <div class="form-text">
+                                        <span id="desc-count">0</span>/200 caracteres
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Por favor, informe uma descrição breve.
+                                    </div>
+                                </div>
+                                
+                                <!-- Conteúdo Completo -->
+                                <div class="col-12">
+                                    <label for="conteudo" class="form-label fw-bold">
+                                        <i class="bi bi-file-text text-primary me-1"></i>
+                                        Conteúdo Completo *
+                                    </label>
+                                    <textarea class="form-control" id="conteudo" name="conteudo" rows="5" required
+                                              placeholder="Descrição detalhada do lugar, sua história, características..."></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o conteúdo completo.
+                                    </div>
+                                </div>
+                                
+                                <!-- Categoria -->
+                                <div class="col-md-6">
+                                    <label for="categoria" class="form-label fw-bold">
+                                        <i class="bi bi-tag text-primary me-1"></i>
+                                        Categoria *
+                                    </label>
+                                    <select class="form-select" id="categoria" name="categoria" required>
+                                        <option value="">Selecione uma categoria</option>
+                                        <option value="Cultura">Cultura</option>
+                                        <option value="Natureza">Natureza</option>
+                                        <option value="Compras">Compras</option>
+                                        <option value="Gastronomia">Gastronomia</option>
+                                        <option value="Entretenimento">Entretenimento</option>
+                                        <option value="História">História</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione uma categoria.
+                                    </div>
+                                </div>
+                                
+                                <!-- Destaque -->
+                                <div class="col-md-6">
+                                    <label for="destaque" class="form-label fw-bold">
+                                        <i class="bi bi-star text-warning me-1"></i>
+                                        Destaque
+                                    </label>
+                                    <select class="form-select" id="destaque" name="destaque">
+                                        <option value="false">Não</option>
+                                        <option value="true">Sim</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Endereço -->
+                                <div class="col-12">
+                                    <label for="endereco" class="form-label fw-bold">
+                                        <i class="bi bi-pin-map text-primary me-1"></i>
+                                        Endereço Completo *
+                                    </label>
+                                    <input type="text" class="form-control" id="endereco" name="endereco" required
+                                           placeholder="Ex: Rua dos Caetés, 750 - Centro, Belo Horizonte - MG">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o endereço completo.
+                                    </div>
+                                </div>
+                                
+                                <!-- Horários -->
+                                <div class="col-md-6">
+                                    <label for="horarios" class="form-label fw-bold">
+                                        <i class="bi bi-clock text-primary me-1"></i>
+                                        Horários de Funcionamento *
+                                    </label>
+                                    <input type="text" class="form-control" id="horarios" name="horarios" required
+                                           placeholder="Ex: Segunda a Sexta: 9h às 18h">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe os horários de funcionamento.
+                                    </div>
+                                </div>
+                                
+                                <!-- Telefone -->
+                                <div class="col-md-6">
+                                    <label for="telefone" class="form-label fw-bold">
+                                        <i class="bi bi-telephone text-primary me-1"></i>
+                                        Telefone/Contato *
+                                    </label>
+                                    <input type="tel" class="form-control" id="telefone" name="telefone" required
+                                           placeholder="Ex: (31) 3333-4444">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o telefone de contato.
+                                    </div>
+                                </div>
+                                
+                                <!-- URL da Imagem Principal -->
+                                <div class="col-12">
+                                    <label for="imagem_principal" class="form-label fw-bold">
+                                        <i class="bi bi-image text-primary me-1"></i>
+                                        URL da Imagem Principal *
+                                    </label>
+                                    <input type="url" class="form-control" id="imagem_principal" name="imagem_principal" required
+                                           placeholder="https://exemplo.com/imagem.jpg">
+                                    <div class="form-text">
+                                        Insira a URL completa da imagem principal do lugar.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Por favor, informe uma URL válida para a imagem.
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            <!-- Botões de Ação -->
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <hr class="my-4">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                                        <a href="index.html" class="btn btn-outline-secondary btn-lg">
+                                            <i class="bi bi-arrow-left me-2"></i>
+                                            Voltar
+                                        </a>
+                                        <div class="d-grid gap-2 d-md-flex">
+                                            <button type="reset" class="btn btn-outline-warning btn-lg">
+                                                <i class="bi bi-arrow-clockwise me-2"></i>
+                                                Limpar
+                                            </button>
+                                            <button type="submit" class="btn btn-primary btn-lg">
+                                                <i class="bi bi-check-circle me-2"></i>
+                                                Cadastrar Lugar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Seção de Gerenciamento de Lugares -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card shadow border-0">
+                    <div class="card-header bg-dark text-white">
+                        <h2 class="h4 mb-0">
+                            <i class="bi bi-list-ul me-2"></i>
+                            Gerenciar Lugares Cadastrados
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="lugares-lista" class="row g-3">
+                            <!-- Lista de lugares será carregada aqui via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- ==================== MODAL DE EDIÇÃO ==================== -->
+    <div class="modal fade" id="modalEdicao" tabindex="-1" aria-labelledby="modalEdicaoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="modalEdicaoLabel">
+                        <i class="bi bi-pencil-square me-2"></i>
+                        Editar Lugar
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-edicao-lugar" novalidate>
+                        <input type="hidden" id="edit-id" name="id">
+                        
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="edit-nome" class="form-label fw-bold">Nome do Lugar *</label>
+                                <input type="text" class="form-control" id="edit-nome" name="nome" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="edit-descricao" class="form-label fw-bold">Descrição Breve *</label>
+                                <textarea class="form-control" id="edit-descricao" name="descricao" rows="3" required maxlength="200"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="edit-conteudo" class="form-label fw-bold">Conteúdo Completo *</label>
+                                <textarea class="form-control" id="edit-conteudo" name="conteudo" rows="4" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit-categoria" class="form-label fw-bold">Categoria *</label>
+                                <select class="form-select" id="edit-categoria" name="categoria" required>
+                                    <option value="">Selecione uma categoria</option>
+                                    <option value="Cultura">Cultura</option>
+                                    <option value="Natureza">Natureza</option>
+                                    <option value="Compras">Compras</option>
+                                    <option value="Gastronomia">Gastronomia</option>
+                                    <option value="Entretenimento">Entretenimento</option>
+                                    <option value="História">História</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit-destaque" class="form-label fw-bold">Destaque</label>
+                                <select class="form-select" id="edit-destaque" name="destaque">
+                                    <option value="false">Não</option>
+                                    <option value="true">Sim</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="edit-endereco" class="form-label fw-bold">Endereço *</label>
+                                <input type="text" class="form-control" id="edit-endereco" name="endereco" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit-horarios" class="form-label fw-bold">Horários *</label>
+                                <input type="text" class="form-control" id="edit-horarios" name="horarios" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit-telefone" class="form-label fw-bold">Telefone *</label>
+                                <input type="tel" class="form-control" id="edit-telefone" name="telefone" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="edit-imagem-principal" class="form-label fw-bold">URL da Imagem *</label>
+                                <input type="url" class="form-control" id="edit-imagem-principal" name="imagem_principal" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning" id="btn-salvar-edicao">
+                        <i class="bi bi-check-circle me-2"></i>
+                        Salvar Alterações
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer class="bg-dark text-white mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold">
+                        <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+                        BH Experiências
+                    </h5>
+                    <p class="mb-0">Descobrindo os melhores lugares de Belo Horizonte</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">© 2025 - Desenvolvido por Gustavo Pereira</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

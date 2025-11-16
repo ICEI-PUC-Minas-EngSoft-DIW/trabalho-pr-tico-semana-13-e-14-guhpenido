@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubra os melhores lugares turísticos de Belo Horizonte - Guia completo com atrações, cultura e natureza">
+    <meta name="keywords" content="Belo Horizonte, turismo, atrações, BH, Minas Gerais, pontos turísticos">
+    <meta name="author" content="Gustavo Pereira">
+    <title>BH Experiências - Descubra Belo Horizonte</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    <!-- ==================== CABEÇALHO E MENU DE NAVEGAÇÃO ==================== -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="bi bi-geo-alt-fill text-warning"></i>
+                    BH Experiências
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#inicio">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#destaques">Destaques</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#lugares">Todos os Lugares</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cadastro_lugares.html">Cadastrar Lugar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sobre">Sobre</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== SEÇÃO 1: SLIDER/CAROUSEL DE DESTAQUES ==================== -->
+    <section id="destaques" class="carousel-section pt-5 mt-5">
+        <div class="container-fluid px-0">
+            <div class="text-center py-5 bg-light">
+                <h2 class="display-5 fw-bold mb-2">✨ Lugares em Destaque</h2>
+                <p class="lead text-muted">Os lugares mais visitados e recomendados de Belo Horizonte</p>
+            </div>
+            
+            <div id="carouselDestaques" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselDestaques" data-bs-slide-to="0" class="active" 
+                            aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselDestaques" data-bs-slide-to="1" 
+                            aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselDestaques" data-bs-slide-to="2" 
+                            aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselDestaques" data-bs-slide-to="3" 
+                            aria-label="Slide 4"></button>
+                </div>
+                
+                <div id="carousel-destaques" class="carousel-inner">
+
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestaques" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselDestaques" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="lugares" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">🌆 Explore Todos os Lugares</h2>
+                <p class="lead text-muted">Descubra os melhores pontos turísticos, culturais e naturais de Belo Horizonte</p>
+            </div>
+            
+            <div id="lugares-cards" class="row g-4">
+
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-4">
+                                <!-- Foto do criador redonda -->
+                                <img src="assets/img/developer.jpeg" 
+                                     alt="Gustavo Pereira" 
+                                     class="rounded-circle shadow-lg"
+                                     style="width: 150px; height: 150px; object-fit: cover; border: 5px solid #0d6efd;">
+                            </div>
+                            <h2 class="fw-bold mb-3">👨‍💻 Sobre o Criador</h2>
+                            <h3 class="h5 text-primary mb-3">Gustavo Pereira</h3>
+                            <p class="lead mb-4">
+                                Estudante de Engenharia de Software na PUC Minas, apaixonado por desenvolvimento web 
+                                e tecnologia. Este projeto foi criado como parte do Trabalho Prático da disciplina 
+                                de Desenvolvimento de Interfaces Web.
+                            </p>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-4">
+                                    <div class="p-3 bg-light rounded">
+                                        <i class="bi bi-mortarboard-fill text-primary fs-3"></i>
+                                        <p class="mb-0 mt-2 fw-bold">PUC Minas</p>
+                                        <small class="text-muted">Engenharia de Software</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-3 bg-light rounded">
+                                        <i class="bi bi-code-slash text-primary fs-3"></i>
+                                        <p class="mb-0 mt-2 fw-bold">Desenvolvedor</p>
+                                        <small class="text-muted">Full Stack</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-3 bg-light rounded">
+                                        <i class="bi bi-geo-alt-fill text-primary fs-3"></i>
+                                        <p class="mb-0 mt-2 fw-bold">Belo Horizonte</p>
+                                        <small class="text-muted">Minas Gerais</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                                <a href="https://github.com/guhpenido" target="_blank" class="btn btn-outline-dark">
+                                    <i class="bi bi-github"></i> GitHub
+                                </a>
+                                <a href="https://www.linkedin.com/in/gustavopenidop/" target="_blank" class="btn btn-outline-primary">
+                                    <i class="bi bi-linkedin"></i> LinkedIn
+                                </a>
+                                <a href="mailto:contato@penido.dev@gmail.com" class="btn btn-outline-success">
+                                    <i class="bi bi-envelope-fill"></i> E-mail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <h5 class="fw-bold">
+                        <i class="bi bi-geo-alt-fill text-warning"></i>
+                        BH Experiências
+                    </h5>
+                    <p class="mb-0 text-muted small">
+                        Descubra os melhores lugares de Belo Horizonte
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0 small">
+                        &copy; 2025 Gustavo Pereira - PUC Minas
+                    </p>
+                    <p class="mb-0 text-muted small">
+                        Trabalho Prático - Desenvolvimento de Interfaces Web
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
