@@ -9,15 +9,53 @@ Sugerimos o uso das seguintes ferramentas acessíveis: [FullCalendar](https://fu
 
 ## Informações do trabalho
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- **Nome:** Gustavo Marcelo Penido Pereira
+- **Matrícula:** 905518
+- **Proposta de projeto escolhida:** Lugares e Experiências
+- **Breve descrição sobre seu projeto:**
 
-**Print da tela com a implementação**
+O projeto "BH Experiências" é um guia digital sobre Belo Horizonte que apresenta os principais lugares e experiências que a capital mineira oferece. A aplicação web foca na entidade principal "Lugares Turísticos" com suas respectivas atrações, categorias e informações detalhadas sobre cada local.
 
-<< Coloque aqui uma breve explicação da implementação feita nessa etapa>>
+## Implementação da Funcionalidade
 
-<<  COLOQUE A IMAGEM TELA 1 AQUI >>
+Nesta etapa foi implementada uma **página de visualização dinâmica** (`visualizacao.html`) que apresenta os dados dos lugares turísticos de Belo Horizonte de forma interativa e visualmente atraente.
 
-<<  COLOQUE A IMAGEM TELA 2 AQUI >>
+### Tecnologias Utilizadas
+
+- **Chart.js**: Para criação de gráficos dinâmicos
+- **Mapbox**: Para mapa interativo com marcadores georreferenciados
+
+### Funcionalidades Implementadas
+
+#### 1. Estatísticas Dinâmicas
+Cards informativos que exibem:
+- Total de lugares cadastrados
+- Quantidade de lugares em destaque
+- Total de atrações disponíveis
+- Número de categorias diferentes
+
+#### 2. Gráfico de Pizza - Distribuição por Categoria
+- Visualização da distribuição dos lugares por categoria (Compras, Natureza, Cultura)
+- Cores dinâmicas baseadas no tipo de categoria
+- Tooltips com percentuais e quantidades
+- Dados obtidos em tempo real do JSON Server
+
+#### 3. Mapa Interativo
+- Mapa baseado no Mapbox com coordenadas reais dos lugares
+- Marcadores coloridos por categoria
+- Marcadores diferenciados para lugares em destaque (borda dourada)
+- Popups informativos com:
+  - Nome do lugar
+  - Categoria e descrição
+  - Número de atrações
+  - Data de cadastro
+  - Informações de contato
+  - Link para página de detalhes
+- Controles de navegação e tela cheia
+- Centro do mapa calculado automaticamente baseado nos dados
+
+**Prints da implementação:**
+
+![Print Dados Chart.js](https://i.imgur.com/kvqQuAb.png)
+![Print Visualização Mapbox](https://i.imgur.com/66OBMN9.png)
+![Print Gráfico Chart.js](https://i.imgur.com/C9Bjxhv.png)
