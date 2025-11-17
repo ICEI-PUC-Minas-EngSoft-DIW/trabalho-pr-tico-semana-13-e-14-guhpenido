@@ -1,11 +1,30 @@
 // ==================== CONFIGURAÇÕES DA API ====================
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = 'http://localhost:3000';
 const API_ENDPOINTS = {
   lugares: `${API_BASE_URL}/lugares`
 };
 
 // ==================== VARIÁVEIS GLOBAIS ====================
 let lugaresData = [];
+
+// ==================== FUNÇÕES UTILITÁRIAS ====================
+
+// Função para resolver caminhos de imagem
+function resolverCaminhoImagem(imagemPath) {
+  if (!imagemPath) return 'assets/img/placeholder.jpg';
+  
+  // Se já é uma URL completa (http/https), retorna como está
+  if (imagemPath.startsWith('http://') || imagemPath.startsWith('https://')) {
+    return imagemPath;
+  }
+  
+  // Se é um caminho relativo, resolve baseado no contexto do servidor
+  if (imagemPath.startsWith('assets/')) {
+    return imagemPath; // JSON Server serve arquivos estáticos da pasta public
+  }
+  
+  return imagemPath;
+}
 
 // ==================== FUNÇÕES DA API ====================
 
@@ -183,7 +202,7 @@ function carregarSliderDestaques() {
 
     const carouselItem = `
       <div class="carousel-item ${activeClass}">
-        <img src="${lugar.imagem_principal}" class="d-block w-100 carousel-image" alt="${lugar.nome}">
+        <img src="${resolverCaminhoImagem(lugar.imagem_principal)}" class="d-block w-100 carousel-image" alt="${lugar.nome}">
         <div class="carousel-caption d-md-block">
           <div class="carousel-content">
             <span class="badge bg-warning text-dark mb-2">⭐ EM DESTAQUE</span>
@@ -218,7 +237,7 @@ function carregarTodosLugares() {
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card h-100 shadow-sm lugar-card">
           <a href="detalhes.html?id=${lugar.id}" class="text-decoration-none">
-            <img src="${lugar.imagem_principal}" class="card-img-top lugar-card-img" alt="${lugar.nome}">
+            <img src="${resolverCaminhoImagem(lugar.imagem_principal)}" class="card-img-top lugar-card-img" alt="${lugar.nome}">
           </a>
           <div class="card-body d-flex flex-column">
             <div class="d-flex justify-content-between align-items-start mb-2">
@@ -279,7 +298,7 @@ async function initDetalhesPage() {
         <!-- Coluna da imagem e informações principais -->
         <div class="col-lg-7">
           <div class="card shadow-sm border-0">
-            <img src="${lugar.imagem_principal}" class="card-img-top" alt="${lugar.nome}" style="height: 450px; object-fit: cover;">
+            <img src="${resolverCaminhoImagem(lugar.imagem_principal)}" class="card-img-top" alt="${lugar.nome}" style="height: 450px; object-fit: cover;">
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <span class="badge bg-primary fs-6">${lugar.categoria}</span>
@@ -457,7 +476,7 @@ async function carregarListaLugares() {
     const lugarCard = `
       <div class="col-md-6 col-lg-4">
         <div class="card h-100 shadow-sm">
-          <img src="${lugar.imagem_principal}" class="card-img-top" alt="${lugar.nome}" style="height: 200px; object-fit: cover;">
+          <img src="${resolverCaminhoImagem(lugar.imagem_principal)}" class="card-img-top" alt="${lugar.nome}" style="height: 200px; object-fit: cover;">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-start mb-2">
               <span class="badge bg-primary">${lugar.categoria}</span>

@@ -11,6 +11,10 @@
       "telefone": "(31) 99753-4842",
       "destaque": true,
       "data": "2025-11-02",
+      "coordenadas": {
+        "latitude": -19.9204868,
+        "longitude": -43.9482814
+      },
       "imagem_principal": "assets/img/mercado-novo.jpeg",
       "atracoes": [
         {
@@ -50,6 +54,10 @@
       "telefone": "(31) 3277-4476",
       "destaque": true,
       "data": "2025-10-12",
+      "coordenadas": {
+        "latitude": -19.9242883,
+        "longitude": -43.9374254
+      },
       "imagem_principal": "assets/img/parque-municipal.jpeg",
       "atracoes": [
         {
@@ -89,6 +97,10 @@
       "telefone": "(31) 3268-3400",
       "destaque": true,
       "data": "2025-10-10",
+      "coordenadas": {
+        "latitude": -19.9329134,
+        "longitude": -43.9409559
+      },
       "imagem_principal": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgFagLw09KgyrWFI2n2iIWVwh9vmovBoDq4g&s",
       "atracoes": [
         {
@@ -128,6 +140,10 @@
       "telefone": "Acesso livre",
       "destaque": false,
       "data": "2025-10-08",
+      "coordenadas": {
+        "latitude": -20.0281184,
+        "longitude": -44.0684281
+      },
       "imagem_principal": "assets/img/serra-do-curral.jpeg",
       "atracoes": [
         {
@@ -167,6 +183,10 @@
       "telefone": "(31) 3277-7443",
       "destaque": true,
       "data": "2025-10-05",
+      "coordenadas": {
+        "latitude": -19.854603,
+        "longitude": -43.975995
+      },
       "imagem_principal": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/belotur/pampulha_qu4rto-studio-0034.jpg",
       "atracoes": [
         {
@@ -206,6 +226,10 @@
       "telefone": "(31) 3277-4994",
       "destaque": false,
       "data": "2025-10-03",
+      "coordenadas": {
+        "latitude": -19.9522398,
+        "longitude": -43.9121182
+      },
       "imagem_principal": "https://portalbelohorizonte.com.br/sites/default/files/arquivos/ao-ar-livre-e-esportes/2019-08/mangabeiras-vander-bras-2.jpg",
       "atracoes": [
         {

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visualização dinâmica dos dados dos lugares turísticos de Belo Horizonte">
+    <meta name="keywords" content="Belo Horizonte, estatísticas, visualização, gráficos, turismo, mapa">
+    <meta name="author" content="Gustavo Pereira">
+    <title>Visualização de Dados - BH Experiências</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+        }
+        .stats-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .stats-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .chart-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 80px;
+            text-align: center;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 10px;
+        }
+        .map-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .marker {
+            cursor: pointer;
+            display: block;
+            border-radius: 50%;
+        }
+        .legend {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 15px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ==================== CABEÇALHO E MENU DE NAVEGAÇÃO ==================== -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="bi bi-geo-alt-fill text-warning"></i>
+                    BH Experiências
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#destaques">Destaques</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#lugares">Todos os Lugares</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cadastro_lugares.html">Cadastrar Lugar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="visualizacao.html">Visualização</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== CABEÇALHO DA PÁGINA ==================== -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4 mb-3">
+                <i class="bi bi-bar-chart-fill me-3"></i>
+                Visualização de Dados
+            </h1>
+            <p class="lead">Análise estatística e mapa interativo dos lugares turísticos de Belo Horizonte</p>
+        </div>
+    </section>
+
+    <!-- ==================== ESTATÍSTICAS GERAIS ==================== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row" id="statsContainer">
+                <!-- Estatísticas serão inseridas aqui via JavaScript -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Carregando...</span>
+                    </div>
+                    <p class="mt-3 text-muted">Carregando dados...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MAPA INTERATIVO ==================== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="map-container">
+                <h3 class="section-title">
+                    <i class="bi bi-map me-2"></i>
+                    Mapa Interativo dos Lugares Turísticos
+                </h3>
+                <div id="map"></div>
+                
+                <!-- Legenda do Mapa -->
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <div class="legend">
+                            <h6><i class="bi bi-info-circle me-2"></i>Legenda</h6>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #FF6384; border-color: #FFD700; border-width: 3px;"></div>
+                                <span><strong>⭐ Lugares em Destaque</strong> - Principais atrações turísticas</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #FF6384;"></div>
+                                <span><strong>Compras</strong> - Mercados e centros comerciais</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #4BC0C0;"></div>
+                                <span><strong>Natureza</strong> - Parques e áreas verdes</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #36A2EB;"></div>
+                                <span><strong>Cultura</strong> - Museus e centros culturais</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="legend">
+                            <h6><i class="bi bi-mouse me-2"></i>Interações</h6>
+                            <small class="text-muted">
+                                • Clique nos marcadores para ver detalhes<br>
+                                • Use os controles para navegar no mapa<br>
+                                • Zoom com scroll do mouse<br>
+                                • Botão de tela cheia disponível
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GRÁFICOS ==================== -->
+    <section class="py-5">
+        <div class="container">
+            
+            <!-- Gráfico de Pizza - Distribuição por Categoria -->
+            <div class="chart-section">
+                <h3 class="section-title">
+                    <i class="bi bi-pie-chart me-2"></i>
+                    Distribuição de Lugares por Categoria
+                </h3>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+                <p class="text-muted text-center">
+                    Este gráfico mostra como os lugares turísticos estão distribuídos entre as diferentes categorias.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>BH Experiências</h5>
+                    <p class="mb-0">Visualização dinâmica dos dados turísticos de Belo Horizonte</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="bi bi-code-slash me-2"></i>
+                        Desenvolvido com Chart.js, Mapbox e Bootstrap
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <script src="assets/js/visualizacao.js"></script>
+
+</body>
+</html>
